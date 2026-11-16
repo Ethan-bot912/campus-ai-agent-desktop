@@ -1,0 +1,18 @@
+{
+  "name": "campus-ai-agent-desktop",
+  "version": "0.1.0",
+  "private": true,
+  "license": "MIT",
+  "description": "校园 AI 内嵌网页 Agent 原型：只读工具、受控执行、状态可见",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "node --test \"tests/**/*.test.js\""
+  },
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "devDependencies": {
+    "electron": "45.3.1"
+  }
+}
