@@ -4,17 +4,40 @@
 
 ## 运行
 
-需要 Windows、Git 和 Node.js 22.12.0 或更新版本。在 PowerShell 中运行：
+需要 Windows、Git 和 Node.js 22.12.0 或更新版本。第一次运行请按以下步骤操作：
+
+1. 从 [Node.js 官网](https://nodejs.org/)安装符合版本要求的 LTS 版，从 [Git 官网](https://git-scm.com/downloads/win)安装 Git。安装完成后关闭并重新打开 PowerShell。
+2. 检查工具是否可用：
 
 ```powershell
+git --version
+node --version
+npm --version
+```
+
+三条命令都应显示版本号，且 Node.js 版本不低于 22.12.0。如果提示找不到命令，确认软件已安装并重新打开 PowerShell；仍不行时检查安装目录是否已加入系统 PATH。
+
+3. 选择保存项目的位置，下载并进入项目。例如，以下命令会把项目放到当前用户的“文档”目录：
+
+```powershell
+cd ([Environment]::GetFolderPath('MyDocuments'))
 git clone https://github.com/Ethan-bot912/campus-ai-agent-desktop.git
 cd campus-ai-agent-desktop
+```
+
+`cd campus-ai-agent-desktop` 只能在包含该文件夹的目录中使用。如果已经下载或解压过项目，可以在文件资源管理器中打开项目文件夹，在地址栏输入 `powershell` 并回车，直接在该目录打开 PowerShell。确认目录中有 `package.json` 后再继续。
+
+4. 在项目目录中安装依赖并启动：
+
+```powershell
 npm ci
 node node_modules/electron/install.js
 npm start
 ```
 
-首次安装 Electron 时会下载桌面运行程序；网络较慢时请等待下载完成，再运行测试或启动应用。
+每条命令成功结束后再执行下一条。首次安装 Electron 时会下载桌面运行程序；网络较慢时请等待下载完成。
+
+如果 `cd` 提示找不到路径，请先检查项目是否下载成功、当前目录是否包含项目文件夹；如果提示找不到 `node` 或 `npm`，先完成上面的 Node.js 安装和版本检查。如果 PowerShell 提示禁止运行 `npm.ps1`，可以在上述命令中将 `npm` 换成 `npm.cmd`。
 
 在打开的网页内自行登录，然后直接发送任务。默认可以读取当前 Windows 用户可读的目录和文本，读取结果会发给学校 AI。写入、删除、移动、运行命令和打开终端需要确认；PowerShell 以当前用户权限运行，工作空间不是命令沙箱。
 
