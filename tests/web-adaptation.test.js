@@ -7,7 +7,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 const vm = require('node:vm');
 
-test('生成中分片和重渲染不会提前或重复执行工具请求', {timeout: 45000}, async t => {
+test('生成、重渲染及浮动面板拖动保持预期行为', {timeout: 45000}, async t => {
   const env = {...process.env};
   delete env.ELECTRON_RUN_AS_NODE;
   const child = spawn(require('electron'), [path.join(__dirname, 'fixtures', 'web-adaptation-electron.js')], {env, windowsHide: true});
